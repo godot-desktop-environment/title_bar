@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bqo4m4mp4d2vu"]
+
+[ext_resource type="Script" uid="uid://c0mx32w57yfii" path="res://title_bar/title_bar.gd" id="1_n441w"]
+[ext_resource type="Texture2D" uid="uid://dtl7cwdvfytvw" path="res://title_bar/minimize.svg" id="2_n441w"]
+[ext_resource type="Texture2D" uid="uid://b3dnonmhm6alg" path="res://title_bar/restore.svg" id="3_dw18p"]
+[ext_resource type="Texture2D" uid="uid://bpi120ank2y5u" path="res://title_bar/maximize.svg" id="3_fa3j7"]
+[ext_resource type="Texture2D" uid="uid://b38xgafbvoq0" path="res://title_bar/close.svg" id="3_ty738"]
+
+[node name="TitleBar" type="PanelContainer" unique_id=649392404]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+script = ExtResource("1_n441w")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1581393641]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 4
+
+[node name="BarControls" type="HBoxContainer" parent="MarginContainer" unique_id=594006302]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ControlsSpace" type="Control" parent="MarginContainer/BarControls" unique_id=249275617]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="MarginContainer/BarControls" unique_id=1094276301]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Window Title"
+horizontal_alignment = 1
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="MarginContainer/BarControls" unique_id=477625747]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonsSpace" type="Control" parent="MarginContainer/BarControls/ButtonsContainer" unique_id=1814912828]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="MinimizeButton" type="Button" parent="MarginContainer/BarControls/ButtonsContainer" unique_id=725585844]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("2_n441w")
+
+[node name="RestoreButton" type="Button" parent="MarginContainer/BarControls/ButtonsContainer" unique_id=1851296408]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+icon = ExtResource("3_dw18p")
+
+[node name="MaximizeButton" type="Button" parent="MarginContainer/BarControls/ButtonsContainer" unique_id=444119627]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("3_fa3j7")
+
+[node name="CloseButton" type="Button" parent="MarginContainer/BarControls/ButtonsContainer" unique_id=570849486]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("3_ty738")
+
+[connection signal="pressed" from="MarginContainer/BarControls/ButtonsContainer/MinimizeButton" to="." method="_on_minimize_button_pressed"]
+[connection signal="pressed" from="MarginContainer/BarControls/ButtonsContainer/RestoreButton" to="." method="_on_restore_button_pressed"]
+[connection signal="pressed" from="MarginContainer/BarControls/ButtonsContainer/MaximizeButton" to="." method="_on_maximize_button_pressed"]
+[connection signal="pressed" from="MarginContainer/BarControls/ButtonsContainer/CloseButton" to="." method="_on_close_button_pressed"]

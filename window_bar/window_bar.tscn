@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://g06wb0fs2rkc"]
+
+[ext_resource type="Script" uid="uid://cgt6p6cj0b7nj" path="res://title_bar/window_bar/window_bar.gd" id="1_4ov3y"]
+
+[node name="WindowBar" type="PanelContainer" unique_id=1215388077]
+script = ExtResource("1_4ov3y")

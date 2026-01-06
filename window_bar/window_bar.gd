@@ -1,6 +1,10 @@
 extends PanelContainer
 
 
+signal restore_requested
+
+signal maximize_requested
+
 var _is_dragging: bool
 
 var _drag_start_position: Vector2i
@@ -13,13 +17,21 @@ func _init() -> void:
 	resized.connect(_on_resized)
 
 
+func _on_double_clicked() -> void:
+	match get_window().mode:
+		Window.MODE_MAXIMIZED:
+			restore_requested.emit()
+		_:
+			maximize_requested.emit()
+
+
 func _on_dragged() -> void:
 	match get_window().mode:
 		Window.MODE_WINDOWED:
 			get_window().position += get_global_mouse_position() as Vector2i - _drag_start_position
 		Window.MODE_MAXIMIZED:
 			_drag_adjustment = get_global_mouse_position().x / get_window().size.x
-			get_window().mode = Window.MODE_WINDOWED
+			restore_requested.emit()
 
 
 func _on_gui_input(event: InputEvent) -> void:
@@ -27,14 +39,6 @@ func _on_gui_input(event: InputEvent) -> void:
 		_on_mouse_button(event)
 	elif event is InputEventMouseMotion:
 		_on_mouse_motion(event)
-
-
-func _on_double_clicked() -> void:
-	match get_window().mode:
-		Window.MODE_MAXIMIZED:
-			get_window().mode = Window.MODE_WINDOWED
-		_:
-			get_window().mode = Window.MODE_MAXIMIZED
 
 
 func _on_mouse_button(event: InputEventMouseButton) -> void:
@@ -45,6 +49,7 @@ func _on_mouse_button(event: InputEventMouseButton) -> void:
 		_drag_start_position = get_global_mouse_position()
 	elif event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 		_is_dragging = false
+		_drag_adjustment = 0
 
 
 func _on_mouse_motion(_event: InputEventMouseMotion) -> void:
@@ -53,7 +58,7 @@ func _on_mouse_motion(_event: InputEventMouseMotion) -> void:
 
 
 func _on_resized() -> void:
-	if _drag_adjustment != 0:
+	if _is_dragging and _drag_adjustment != 0:
 		get_window().position += (get_global_mouse_position() as Vector2i)
 		get_window().position.x -= (get_window().size.x * _drag_adjustment) as int
 		_drag_start_position = get_global_mouse_position()

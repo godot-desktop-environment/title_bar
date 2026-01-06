@@ -68,8 +68,6 @@ func _on_close_button_pressed() -> void:
 
 
 func _on_maximize_button_pressed() -> void:
-	%MaximizeButton.visible = false
-	%RestoreButton.visible = true
 	maximize_pressed.emit()
 
 
@@ -78,6 +76,4 @@ func _on_minimize_button_pressed() -> void:
 
 
 func _on_restore_button_pressed() -> void:
-	%MaximizeButton.visible = true
-	%RestoreButton.visible = false
 	restore_pressed.emit()

@@ -61,17 +61,17 @@ enum AlignmentMode {
 		return %MinimizeButton.visible
 
 
-func _on_close_button_pressed() -> void:
+func _on_close_button_pressed_without_leaving() -> void:
 	close_pressed.emit()
 
 
-func _on_maximize_button_pressed() -> void:
+func _on_maximize_button_pressed_without_leaving() -> void:
 	maximize_pressed.emit()
 
 
-func _on_minimize_button_pressed() -> void:
+func _on_minimize_button_pressed_without_leaving() -> void:
 	minimize_pressed.emit()
 
 
-func _on_restore_button_pressed() -> void:
+func _on_restore_button_pressed_without_leaving() -> void:
 	restore_pressed.emit()

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://tibesgk5vkhg"]
+
+[ext_resource type="Script" uid="uid://dbx7xnnokbefw" path="res://title_bar/bar_button/bar_button.gd" id="1_13ktp"]
+
+[node name="BarButton" type="Button" unique_id=350144984]
+script = ExtResource("1_13ktp")

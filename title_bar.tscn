@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b3dnonmhm6alg" path="res://title_bar/restore.svg" id="3_dw18p"]
 [ext_resource type="Texture2D" uid="uid://bpi120ank2y5u" path="res://title_bar/maximize.svg" id="3_fa3j7"]
 [ext_resource type="Texture2D" uid="uid://b38xgafbvoq0" path="res://title_bar/close.svg" id="3_ty738"]
+[ext_resource type="PackedScene" uid="uid://tibesgk5vkhg" path="res://title_bar/bar_button/bar_button.tscn" id="6_ck11e"]
 
 [node name="TitleBar" type="PanelContainer" unique_id=649392404]
 anchors_preset = 10
@@ -36,28 +37,28 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="MinimizeButton" type="Button" parent="MarginContainer/BarControls/ButtonsContainer" unique_id=725585844]
+[node name="MinimizeButton" parent="MarginContainer/BarControls/ButtonsContainer" unique_id=350144984 instance=ExtResource("6_ck11e")]
 unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("2_n441w")
 
-[node name="RestoreButton" type="Button" parent="MarginContainer/BarControls/ButtonsContainer" unique_id=1851296408]
+[node name="RestoreButton" parent="MarginContainer/BarControls/ButtonsContainer" unique_id=814063944 instance=ExtResource("6_ck11e")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 icon = ExtResource("3_dw18p")
 
-[node name="MaximizeButton" type="Button" parent="MarginContainer/BarControls/ButtonsContainer" unique_id=444119627]
+[node name="MaximizeButton" parent="MarginContainer/BarControls/ButtonsContainer" unique_id=1572088898 instance=ExtResource("6_ck11e")]
 unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("3_fa3j7")
 
-[node name="CloseButton" type="Button" parent="MarginContainer/BarControls/ButtonsContainer" unique_id=570849486]
+[node name="CloseButton" parent="MarginContainer/BarControls/ButtonsContainer" unique_id=132353474 instance=ExtResource("6_ck11e")]
 unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("3_ty738")
 
-[connection signal="pressed" from="MarginContainer/BarControls/ButtonsContainer/MinimizeButton" to="." method="_on_minimize_button_pressed"]
-[connection signal="pressed" from="MarginContainer/BarControls/ButtonsContainer/RestoreButton" to="." method="_on_restore_button_pressed"]
-[connection signal="pressed" from="MarginContainer/BarControls/ButtonsContainer/MaximizeButton" to="." method="_on_maximize_button_pressed"]
-[connection signal="pressed" from="MarginContainer/BarControls/ButtonsContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed_without_leaving" from="MarginContainer/BarControls/ButtonsContainer/MinimizeButton" to="." method="_on_minimize_button_pressed_without_leaving"]
+[connection signal="pressed_without_leaving" from="MarginContainer/BarControls/ButtonsContainer/RestoreButton" to="." method="_on_restore_button_pressed_without_leaving"]
+[connection signal="pressed_without_leaving" from="MarginContainer/BarControls/ButtonsContainer/MaximizeButton" to="." method="_on_maximize_button_pressed_without_leaving"]
+[connection signal="pressed_without_leaving" from="MarginContainer/BarControls/ButtonsContainer/CloseButton" to="." method="_on_close_button_pressed_without_leaving"]

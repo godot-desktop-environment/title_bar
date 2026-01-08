@@ -17,23 +17,16 @@ script = ExtResource("1_n441w")
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 0
+theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="BarControls" type="HBoxContainer" parent="MarginContainer" unique_id=594006302]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControlsSpace" type="Control" parent="MarginContainer/BarControls" unique_id=249275617]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
 [node name="Title" type="Label" parent="MarginContainer/BarControls" unique_id=1094276301]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
 text = "Window Title"
 horizontal_alignment = 1
 
@@ -41,12 +34,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="ButtonsSpace" type="Control" parent="MarginContainer/BarControls/ButtonsContainer" unique_id=1814912828]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
+alignment = 2
 
 [node name="MinimizeButton" type="Button" parent="MarginContainer/BarControls/ButtonsContainer" unique_id=725585844]
 unique_name_in_owner = true

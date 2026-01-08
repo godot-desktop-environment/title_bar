@@ -21,20 +21,18 @@ enum AlignmentMode {
 		
 		if a == AlignmentMode.BEGIN:
 			%Title.move_to_front()
-			%ControlsSpace.move_to_front()
 			%CloseButton.move_to_front()
 			%MaximizeButton.move_to_front()
 			%RestoreButton.move_to_front()
 			%MinimizeButton.move_to_front()
-			%ButtonsSpace.move_to_front()
+			%ButtonsContainer.alignment = %ButtonsContainer.ALIGNMENT_BEGIN
 		else:
-			%Title.move_to_front()
 			%ButtonsContainer.move_to_front()
-			%ButtonsSpace.move_to_front()
 			%MinimizeButton.move_to_front()
 			%RestoreButton.move_to_front()
 			%MaximizeButton.move_to_front()
 			%CloseButton.move_to_front()
+			%ButtonsContainer.alignment = %ButtonsContainer.ALIGNMENT_END
 
 @export var title: String = "Window Title":
 	set(t):

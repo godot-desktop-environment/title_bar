@@ -1,10 +1,6 @@
 extends PanelContainer
 
 
-signal restore_requested
-
-signal maximize_requested
-
 var _is_dragging: bool
 
 var _drag_start_position: Vector2i
@@ -20,9 +16,9 @@ func _init() -> void:
 func _on_double_clicked() -> void:
 	match get_window().mode:
 		Window.MODE_MAXIMIZED:
-			restore_requested.emit()
+			get_window().mode = Window.MODE_WINDOWED
 		_:
-			maximize_requested.emit()
+			get_window().mode = Window.MODE_MAXIMIZED
 
 
 func _on_dragged() -> void:
@@ -31,7 +27,7 @@ func _on_dragged() -> void:
 			get_window().position += get_global_mouse_position() as Vector2i - _drag_start_position
 		Window.MODE_MAXIMIZED:
 			_drag_adjustment = get_global_mouse_position().x / get_window().size.x
-			restore_requested.emit()
+			get_window().mode = Window.MODE_WINDOWED
 
 
 func _on_gui_input(event: InputEvent) -> void:
